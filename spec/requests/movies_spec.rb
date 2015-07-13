@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "Movies", type: :request do
-  before { @movie = Movie.create title: 'Frames from the Edge' }
 
   describe "GET /movies" do
+    before { @movie = Movie.create title: 'Frames from the Edge' }
+
     it "returns a list of movies" do
       get movies_path(format: :json)
       data = JSON.parse(response.body)
@@ -39,7 +40,7 @@ RSpec.describe "Movies", type: :request do
     end
   end
 
-  describe "POST /movies/:id", type: :request do
+  describe "PUT /movies/:id", type: :request do
     before { @movie = Movie.create title: 'Frames from the Edge' }
 
     it "updates a movie" do
